@@ -1,3 +1,5 @@
 package com.example.p4.Data
 
-data class DataForm()
+data class DataForm(
+    var sex: String = " "
+)

@@ -25,7 +25,8 @@ class CobaViewModel: ViewModel {
     }
 
     fun setJenisK(pilihJK:String){
-        _uiState.update {(sex = pilihJK)
+        _uiState.update {(
+            var sex = pilihJK)
             DataForm()
         }
     }
