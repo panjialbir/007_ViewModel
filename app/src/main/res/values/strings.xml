@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">p4</string>
     <string name="sbmt">submit</string>
+    <string name="lk">laki</string>
+    <string name="pr">perempuan</string>
+    <string name="blm">belum</string>
+    <string name="sdh">sudah</string>
 </resources>

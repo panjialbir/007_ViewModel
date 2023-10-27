@@ -37,4 +37,8 @@ class CobaViewModel: ViewModel {
             DataForm()
         }
     }
+    fun setJenisSt(pilihSt:String){
+        _uiState.update {var status = pilihSt
+        }
+    }
 }

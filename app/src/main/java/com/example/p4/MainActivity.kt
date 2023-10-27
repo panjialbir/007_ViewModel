@@ -39,6 +39,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
 import com.example.p4.Data.DataForm
 import com.example.p4.Data.DataSource.jenis
 import com.example.p4.ui.theme.CobaViewModel
@@ -91,7 +92,7 @@ fun TampilLayout(modifier: Modifier = Modifier) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TampilForm(cobaViewModel: CobaViewModel = viewModel()) {
+fun TampilForm(cobaViewModel: CobaViewModel = ViewModel()) {
     var textNama by remember { mutableStateOf("") }
     var textTlp by remember { mutableStateOf("") }
     val context = LocalContext.current
@@ -134,7 +135,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()) {
         }
     ) {
         Text(
-            text = stringResource(R.string.submit),
+            text = stringResource(R.string.sbmt),
             fontSize = 16.sp
         )
     }
@@ -142,7 +143,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()) {
     Spacer(modifier = Modifier.height(100.dp))
 
     TextHasil(
-        namanya = CobaViewModel.namaUser,
+        namanya = cobaViewModel.namaUser,
         telponnya = cobaViewModel.noTlp,
         jenisnya = cobaViewModel.jenisKl
     )
