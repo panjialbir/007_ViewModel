@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import com.example.p4.Data.DataForm
 import com.example.p4.Data.DataSource.jenis
+import com.example.p4.Data.DataSource.jenisst
 import com.example.p4.ui.theme.CobaViewModel
 import com.example.p4.ui.theme.P4Theme
 
@@ -95,6 +96,7 @@ fun TampilLayout(modifier: Modifier = Modifier) {
 fun TampilForm(cobaViewModel: CobaViewModel = ViewModel()) {
     var textNama by remember { mutableStateOf("") }
     var textTlp by remember { mutableStateOf("") }
+    var textEml by remember { mutableStateOf("") }
     val context = LocalContext.current
     val dataForm: DataForm
     val uiState by cobaViewModel.uiState.collectAsState()
@@ -123,15 +125,31 @@ fun TampilForm(cobaViewModel: CobaViewModel = ViewModel()) {
         }
     )
 
+    OutlinedTextField(
+        value = textEml,
+        singleLine = true,
+        shape = MaterialTheme.shapes.large,
+        modifier = Modifier.fillMaxWidth(),
+        label = { Text(text = "Email") },
+        onValueChange = {
+            textEml = it
+        }
+    )
+
     SelectJK(
         options = jenis.map { id -> context.resources.getString(id) },
         onSelectionChanged = { cobaViewModel.setJenisK(it) }
     )
 
+    SelectST(
+        options = jenisst.map { id -> context.resources.getString(id) },
+        onSelectionChanged = { cobaViewModel.setJeniss(it) }
+    )
+
     Button(
         modifier = Modifier.fillMaxWidth(),
         onClick = {
-            cobaViewModel.insertData(textNama, textTlp, dataForm.sex)
+            cobaViewModel.insertData(textNama, textTlp, textEml, dataForm.sex, dataForm.status)
         }
     ) {
         Text(
