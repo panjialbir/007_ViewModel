@@ -93,7 +93,7 @@ fun TampilLayout(modifier: Modifier = Modifier) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TampilForm(cobaViewModel: CobaViewModel = ViewModel()) {
+fun TampilForm(cobaViewModel: CobaViewModel = ViewModel) {
     var textNama by remember { mutableStateOf("") }
     var textTlp by remember { mutableStateOf("") }
     var textEml by remember { mutableStateOf("") }
@@ -141,15 +141,11 @@ fun TampilForm(cobaViewModel: CobaViewModel = ViewModel()) {
         onSelectionChanged = { cobaViewModel.setJenisK(it) }
     )
 
-    SelectST(
-        options = jenisst.map { id -> context.resources.getString(id) },
-        onSelectionChanged = { cobaViewModel.setJeniss(it) }
-    )
 
     Button(
         modifier = Modifier.fillMaxWidth(),
         onClick = {
-            cobaViewModel.insertData(textNama, textTlp, textEml, dataForm.sex, dataForm.status)
+            cobaViewModel.BacaData(textNama, textTlp, textEml, dataForm.sex, dataForm.status)
         }
     ) {
         Text(
